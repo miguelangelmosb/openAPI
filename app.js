@@ -26,6 +26,18 @@ app.get('/sancocho', (req, res) => {
     });
   });
 
+  app.put('/sancocho', (req, res) => {
+    const { ingredientes } = req.body;
+    if (!ingredientes || !Array.isArray(ingredientes)) {
+      return res.status(400).json({ message: 'Se debe enviar una lista con ingredientes' });
+    }
+    sancocho.ingredientes.push(...ingredientes);
+    res.status(200).json({
+      message: 'Se han agregado los ingredienes correctamente',
+      data: sancocho.ingredientes
+    });
+  });
+
 const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
