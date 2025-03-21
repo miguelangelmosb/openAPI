@@ -14,6 +14,17 @@ app.get('/sancocho', (req, res) => {
     });
   });
 
+  app.post('/sancocho', (req, res) => {
+    const { ingredientes } = req.body;
+    if (!ingredientes || !Array.isArray(ingredientes)) {
+      return res.status(400).json({ message: 'Debe enviar una lista de ingredientes' });
+    }
+    sancocho = { id: Date.now(), ingredientes };
+    res.status(201).json({
+      message: 'Se ha ordenado correctamente el sancocho',
+      data: sancocho
+    });
+  });
 
 const PORT = 3000;
 app.listen(PORT, () => {
