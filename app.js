@@ -7,3 +7,10 @@ let sancocho = {
     ingredientes: ['carne' , 'pollo' , 'yuca', 'papa', 'ají', 'cilantro', 'ahuyama', 'mazorca']
 };
 
+app.get('/sancocho', (req, res) => {
+    res.status(200).json({
+      message: 'Ingredientes disponibles:',
+      data: sancocho.ingredientes
+    });
+  });
+
