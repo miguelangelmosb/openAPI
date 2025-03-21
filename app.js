@@ -58,6 +58,13 @@ app.get('/sancocho', (req, res) => {
     });
   });
   
+  app.delete('/sancocho', (req, res) => {
+    sancocho = null;
+    res.status(200).json({
+      message: 'El sancocho eliminó correctamente',
+      data: null
+    });
+  });
 
 const PORT = 3000;
 app.listen(PORT, () => {
