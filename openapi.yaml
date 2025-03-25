@@ -69,3 +69,36 @@ post:
                         items:
                           type: string
                         example: ["plátano", "mazorca", "papa", "yuca"]
+
+put:
+      summary: Agregar ingredientes al sancocho
+      description: Permite agregar más ingredientes al sancocho existente.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ingredientes:
+                  type: array
+                  items:
+                    type: string
+              example:
+                ingredientes: ["cilantro", "ahuyama"]
+      responses:
+        '200':
+          description: Ingredientes agregados correctamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Se han agregado los ingredientes correctamente
+                  data:
+                    type: array
+                    items:
+                      type: string
+                    example: ["carne", "pollo", "yuca", "papa", "cilantro", "ahuyama"]                      
