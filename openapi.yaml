@@ -101,4 +101,37 @@ put:
                     type: array
                     items:
                       type: string
-                    example: ["carne", "pollo", "yuca", "papa", "cilantro", "ahuyama"]                      
+                    example: ["carne", "pollo", "yuca", "papa", "cilantro", "ahuyama"]     
+
+patch:
+      summary: Actualizar un ingrediente en el sancocho
+      description: Reemplaza un ingrediente actual por otro en el sancocho.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ingredienteActual:
+                  type: string
+                  example: "papa"
+                ingredienteNuevo:
+                  type: string
+                  example: "batata"
+      responses:
+        '200':
+          description: Ingrediente reemplazado exitosamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: El ingrediente se reemplazó correctamente
+                  data:
+                    type: array
+                    items:
+                      type: string
+                    example: ["carne", "pollo", "yuca", "batata"]                 
