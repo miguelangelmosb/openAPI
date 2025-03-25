@@ -13,3 +13,10 @@ const swaggerDocument = YAML.load('./openapi.yaml');
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 let ingredientes = ['carne', 'pollo', 'yuca', 'papa'];
+
+app.get('/sancocho', (req, res) => {
+    res.json({
+      message: 'Ingredientes disponibles:',
+      data: ingredientes,
+    });
+  });
