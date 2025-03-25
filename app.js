@@ -49,3 +49,21 @@ app.get('/sancocho', (req, res) => {
       data: ingredientes,
     });
   });
+
+  app.patch('/sancocho', (req, res) => {
+    const { ingredienteActual, ingredienteNuevo } = req.body;
+    if (!ingredienteActual || !ingredienteNuevo) {
+      return res.status(400).json({ message: 'Faltan datos para actualizar un ingrediente.' });
+    }
+  
+    const index = ingredientes.indexOf(ingredienteActual);
+    if (index === -1) {
+      return res.status(404).json({ message: 'El ingrediente no se encontró en el sancocho.' });
+    }
+  
+    ingredientes[index] = ingredienteNuevo;
+    res.json({
+      message: 'El ingrediente se reemplazó correctamente',
+      data: ingredientes,
+    });
+  });
