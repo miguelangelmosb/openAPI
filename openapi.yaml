@@ -1,0 +1,8 @@
+openapi: 3.0.1
+info:
+  title: Sancocho API
+  version: 1.0.0
+  description: API para gestionar los ingredientes de un sancocho.
+servers:
+  - url: http://localhost:3000
+    description: Servidor local
