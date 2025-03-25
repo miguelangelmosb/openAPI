@@ -28,3 +28,44 @@ paths:
                     items:
                       type: string
                     example: ["carne", "pollo", "yuca", "papa"]
+                  
+post:
+      summary: Crear un nuevo sancocho
+      description: Crea un nuevo sancocho con los ingredientes proporcionados.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ingredientes:
+                  type: array
+                  items:
+                    type: string
+              required:
+                - ingredientes
+              example:
+                ingredientes: ["plátano", "mazorca", "papa", "yuca"]
+      responses:
+        '201':
+          description: Sancocho creado exitosamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Se ha ordenado correctamente el sancocho
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 12345
+                      ingredientes:
+                        type: array
+                        items:
+                          type: string
+                        example: ["plátano", "mazorca", "papa", "yuca"]
