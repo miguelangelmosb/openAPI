@@ -67,3 +67,12 @@ app.get('/sancocho', (req, res) => {
       data: ingredientes,
     });
   });
+
+  app.delete('/sancocho', (req, res) => {
+    ingredientes = [];
+    res.json({
+      message: 'El sancocho se consumió correctamente',
+      data: null,
+    });
+  });
+  
