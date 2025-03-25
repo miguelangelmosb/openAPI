@@ -6,3 +6,25 @@ info:
 servers:
   - url: http://localhost:3000
     description: Servidor local
+
+paths:
+  /sancocho:
+    get:
+      summary: Obtener los ingredientes del sancocho
+      description: Devuelve la lista de ingredientes disponibles en el sancocho.
+      responses:
+        '200':
+          description: Lista de ingredientes
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Ingredientes disponibles:
+                  data:
+                    type: array
+                    items:
+                      type: string
+                    example: ["carne", "pollo", "yuca", "papa"]
