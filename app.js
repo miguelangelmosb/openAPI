@@ -20,3 +20,19 @@ app.get('/sancocho', (req, res) => {
       data: ingredientes,
     });
   });
+
+  app.post('/sancocho', (req, res) => {
+    const { ingredientes: nuevosIngredientes } = req.body;
+    if (!nuevosIngredientes || !Array.isArray(nuevosIngredientes)) {
+      return res.status(400).json({ message: 'Faltan ingredientes válidos.' });
+    }
+  
+    ingredientes = [...ingredientes, ...nuevosIngredientes];
+    res.status(201).json({
+      message: 'Se ha ordenado correctamente el sancocho',
+      data: {
+        id: Date.now(),
+        ingredientes,
+      },
+    });
+  });
