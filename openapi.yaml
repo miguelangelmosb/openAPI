@@ -28,8 +28,8 @@ paths:
                     items:
                       type: string
                     example: ["carne", "pollo", "yuca", "papa"]
-                  
-post:
+
+    post:
       summary: Crear un nuevo sancocho
       description: Crea un nuevo sancocho con los ingredientes proporcionados.
       requestBody:
@@ -70,7 +70,7 @@ post:
                           type: string
                         example: ["plátano", "mazorca", "papa", "yuca"]
 
-put:
+    put:
       summary: Agregar ingredientes al sancocho
       description: Permite agregar más ingredientes al sancocho existente.
       requestBody:
@@ -101,9 +101,9 @@ put:
                     type: array
                     items:
                       type: string
-                    example: ["carne", "pollo", "yuca", "papa", "cilantro", "ahuyama"]     
+                    example: ["carne", "pollo", "yuca", "papa", "cilantro", "ahuyama"]
 
-patch:
+    patch:
       summary: Actualizar un ingrediente en el sancocho
       description: Reemplaza un ingrediente actual por otro en el sancocho.
       requestBody:
@@ -136,7 +136,7 @@ patch:
                       type: string
                     example: ["carne", "pollo", "yuca", "batata"]
 
-delete:
+    delete:
       summary: Eliminar el sancocho
       description: Borra el sancocho completo.
       responses:
@@ -152,5 +152,3 @@ delete:
                     example: El sancocho eliminó correctamente
                   data:
                     type: null
-
-                 
