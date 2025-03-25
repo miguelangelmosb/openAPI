@@ -11,3 +11,5 @@ const YAML = require('yamljs');
 const swaggerDocument = YAML.load('./openapi.yaml');
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+let ingredientes = ['carne', 'pollo', 'yuca', 'papa'];
