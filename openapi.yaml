@@ -134,4 +134,23 @@ patch:
                     type: array
                     items:
                       type: string
-                    example: ["carne", "pollo", "yuca", "batata"]                 
+                    example: ["carne", "pollo", "yuca", "batata"]
+
+delete:
+      summary: Eliminar el sancocho
+      description: Borra el sancocho completo.
+      responses:
+        '200':
+          description: Sancocho eliminado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: El sancocho eliminó correctamente
+                  data:
+                    type: null
+
+                 
