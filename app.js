@@ -36,3 +36,16 @@ app.get('/sancocho', (req, res) => {
       },
     });
   });
+
+  app.put('/sancocho', (req, res) => {
+    const { ingredientes: nuevosIngredientes } = req.body;
+    if (!nuevosIngredientes || !Array.isArray(nuevosIngredientes)) {
+      return res.status(400).json({ message: 'Faltan ingredientes válidos.' });
+    }
+  
+    ingredientes.push(...nuevosIngredientes);
+    res.json({
+      message: 'Se han agregado los ingredientes correctamente',
+      data: ingredientes,
+    });
+  });
