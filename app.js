@@ -75,4 +75,9 @@ app.get('/sancocho', (req, res) => {
       data: null,
     });
   });
+
+  app.listen(port, () => {
+    console.log(`Servidor corriendo en http://localhost:${port}`);
+    console.log(`Documentación de la API en http://localhost:${port}/api-docs`);
+  });
   
