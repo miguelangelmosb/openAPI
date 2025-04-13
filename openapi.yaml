@@ -1,0 +1,154 @@
+openapi: 3.0.1
+info:
+  title: Sancocho API
+  version: 1.0.0
+  description: API para gestionar los ingredientes de un sancocho.
+servers:
+  - url: http://localhost:3000
+    description: Servidor local
+
+paths:
+  /sancocho:
+    get:
+      summary: Obtener los ingredientes del sancocho
+      description: Devuelve la lista de ingredientes disponibles en el sancocho.
+      responses:
+        '200':
+          description: Lista de ingredientes
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Ingredientes disponibles:
+                  data:
+                    type: array
+                    items:
+                      type: string
+                    example: ["carne", "pollo", "yuca", "papa"]
+
+    post:
+      summary: Crear un nuevo sancocho
+      description: Crea un nuevo sancocho con los ingredientes proporcionados.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ingredientes:
+                  type: array
+                  items:
+                    type: string
+              required:
+                - ingredientes
+              example:
+                ingredientes: ["plátano", "mazorca", "papa", "yuca"]
+      responses:
+        '201':
+          description: Sancocho creado exitosamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Se ha ordenado correctamente el sancocho
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 12345
+                      ingredientes:
+                        type: array
+                        items:
+                          type: string
+                        example: ["plátano", "mazorca", "papa", "yuca"]
+
+    put:
+      summary: Agregar ingredientes al sancocho
+      description: Permite agregar más ingredientes al sancocho existente.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ingredientes:
+                  type: array
+                  items:
+                    type: string
+              example:
+                ingredientes: ["cilantro", "ahuyama"]
+      responses:
+        '200':
+          description: Ingredientes agregados correctamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Se han agregado los ingredientes correctamente
+                  data:
+                    type: array
+                    items:
+                      type: string
+                    example: ["carne", "pollo", "yuca", "papa", "cilantro", "ahuyama"]
+
+    patch:
+      summary: Actualizar un ingrediente en el sancocho
+      description: Reemplaza un ingrediente actual por otro en el sancocho.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ingredienteActual:
+                  type: string
+                  example: "papa"
+                ingredienteNuevo:
+                  type: string
+                  example: "batata"
+      responses:
+        '200':
+          description: Ingrediente reemplazado exitosamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: El ingrediente se reemplazó correctamente
+                  data:
+                    type: array
+                    items:
+                      type: string
+                    example: ["carne", "pollo", "yuca", "batata"]
+
+    delete:
+      summary: Eliminar el sancocho
+      description: Borra el sancocho completo.
+      responses:
+        '200':
+          description: Sancocho eliminado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: El sancocho eliminó correctamente
+                  data:
+                    type: null
