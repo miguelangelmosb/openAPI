@@ -34,13 +34,17 @@ app.post('/sancocho', (req, res) => {
     return res.status(400).json({ message: 'Faltan ingredientes válidos.' });
   }
 
+  const nuevoSancocho = {
+    id: Date.now(),
+    ingredientes: nuevosIngredientes,
+  };
+
   ingredientes = [...ingredientes, ...nuevosIngredientes];
+  sancochosPedidos.push(nuevoSancocho);
+
   res.status(201).json({
     message: 'Se ha ordenado correctamente el sancocho',
-    data: {
-      id: Date.now(),
-      ingredientes,
-    },
+    data: nuevoSancocho,
   });
 });
 
