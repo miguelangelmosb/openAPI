@@ -12,7 +12,7 @@ app.use(express.json());
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 let ingredientes = ['carne', 'pollo', 'yuca', 'papa'];
-let sancochoPedidos = [];
+let sancochosPedidos = []; 
 
 app.get('/sancocho', (req, res) => {
   res.json({
@@ -40,7 +40,7 @@ app.post('/sancocho', (req, res) => {
   };
 
   ingredientes = [...ingredientes, ...nuevosIngredientes];
-  sancochosPedidos.push(nuevoSancocho);
+  sancochosPedidos.push(nuevoSancocho); 
 
   res.status(201).json({
     message: 'Se ha ordenado correctamente el sancocho',
