@@ -12,11 +12,19 @@ app.use(express.json());
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 let ingredientes = ['carne', 'pollo', 'yuca', 'papa'];
+let sancochosPedidos = []; 
 
 app.get('/sancocho', (req, res) => {
   res.json({
     message: 'Ingredientes disponibles:',
     data: ingredientes,
+  });
+});
+
+app.get('/pedidos', (req, res) => {
+  res.json({
+    message: 'Lista de sancochos pedidos:',
+    data: sancochosPedidos,
   });
 });
 
@@ -26,13 +34,17 @@ app.post('/sancocho', (req, res) => {
     return res.status(400).json({ message: 'Faltan ingredientes válidos.' });
   }
 
+  const nuevoSancocho = {
+    id: Date.now(),
+    ingredientes: nuevosIngredientes,
+  };
+
   ingredientes = [...ingredientes, ...nuevosIngredientes];
+  sancochosPedidos.push(nuevoSancocho); 
+
   res.status(201).json({
     message: 'Se ha ordenado correctamente el sancocho',
-    data: {
-      id: Date.now(),
-      ingredientes,
-    },
+    data: nuevoSancocho,
   });
 });
 

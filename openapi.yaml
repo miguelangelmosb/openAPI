@@ -152,3 +152,32 @@ paths:
                     example: El sancocho eliminó correctamente
                   data:
                     type: null
+
+  /pedidos:
+    get:
+      summary: Obtener los sancochos pedidos
+      description: Devuelve la lista de todos los sancochos pedidos.
+      responses:
+        '200':
+          description: Lista de sancochos pedidos
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Lista de sancochos pedidos:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 12345
+                        ingredientes:
+                          type: array
+                          items:
+                            type: string
+                          example: ["carne", "pollo", "yuca", "papa"]
